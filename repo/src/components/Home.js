@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Search from './Search';
+import { useNavigate } from 'react-router-dom';
 
-const handleclick=()=>{
-    <Search/>
-}
-const Home = () => {
+const Home = (props) => {
+    const navigate = useNavigate()
+    
+    const handleOnClick=(event)=>{
+        props.setName(event.target.value)
+        navigate("/search")
+    }
     return ( 
-    <div><input type="text" id="name" required/>
-    <button onClick={handleclick}></button></div>
+    <div>
+        <label >User Name</label>
+        <input type="text" required/>
+        <button onClick={handleOnClick}>submit</button>
+    </div>
     );
 }
+
+
  
 export default Home;
