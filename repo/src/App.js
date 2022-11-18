@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +13,8 @@ import Search from './components/Search';
 import WishList from './components/WishList';
 
 function App() {
+  const [ nameVal, setName]=useState("")
+
   return (
     <Router>
       <div>
@@ -30,11 +32,11 @@ function App() {
           </ul>
         </nav>
         <Routes>
-          <Route path="/search" element={<Search/>}>
+          <Route path="/search" element={<Search username={nameVal}/>}>
           </Route>
           <Route path="/wishlist" element={<WishList/>}>
           </Route>
-          <Route path="/" element={<Home/>}>
+          <Route path="/" element={<Home setName={setName}/>}>
           </Route>
         </Routes>
       </div>
